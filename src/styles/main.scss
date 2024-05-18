@@ -1,3 +1,160 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+html {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 36px;
+  scroll-behavior: smooth;
+
+  color: #2D2D2D;
+}
+
 body {
   margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.article {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  width: 424px;
+  border-radius: 4px;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 0;
+    margin: 0;
+    margin-left: 24px;
+  }
+
+  &__link {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    color: #2D2D2D;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+@each $index, $color in $articles {
+  $height: if($index < 4, 527px, if($index < 7, 545px, 587px));
+
+  @each $index, $color in $articles {
+    $width: map-get($image-widths, $index);
+    $height: if($index < 4, 527px, if($index < 7, 545px, 587px));
+
+    .article-#{$index} {
+      height: $height;
+      border: 2px solid #{$color};
+      background-repeat: no-repeat;
+      background-position: right 24px top 24px;
+      background-size: $width $image-height;
+
+    }
+  }
+}
+
+.image {
+  align-self: flex-end;
+  margin-bottom: 24px;
+  background-image: url('../images/sprite.png');
+  height: 100px;
+}
+
+.article-1__image {
+    background-position: -0px -0px;
+    width: 94px;
+}
+
+.article-2__image {
+  background-position: -94px -0px;
+  width: 91px;
+}
+
+.article-3__image {
+  background-position: -185px -0px;
+  width: 123px;
+}
+
+.article-4__image {
+  background-position: -308px -0px;
+  width: 111px;
+}
+
+.article-5__image {
+  background-position: -419px -0px;
+  width: 110px;
+}
+
+.article-6__image {
+  background-position: -529px -0px;
+  width: 117px;
+}
+
+.article-7__image {
+  background-position: -646px -0px;
+  width: 98px;
+}
+
+.article-8__image {
+  background-position: -744px -0px;
+  width: 116px;
+}
+
+.article-9__image {
+  background-position: -860px -0px;
+  width: 94px;
+}
+
+h2 {
+  margin: 0;
+  color: $header-color;
+  font-size: 36px;
+  line-height: 43.2px;
+}
+
+.article-1,
+.article-2,
+.article-3,
+.article-4,
+.article-5,
+.article-6 {
+  @include change-height-large-screen(587px);
+}
+
+.article-3 {
+  @include change-height-medium-screen(587px);
+}
+
+.article-1,
+.article-2,
+.article-3 {
+  @include change-height-small-screen(580px);
 }

@@ -1,0 +1,17 @@
+@mixin change-height-small-screen($height-increase) {
+  @media (max-width: 600px) {
+    height: $height-increase;
+  }
+}
+
+@mixin change-height-medium-screen($height-increase) {
+  @media (max-width: 1500px) {
+    height: $height-increase;
+  }
+}
+
+@mixin change-height-large-screen($height-increase) {
+  @media (max-width: 2200px) {
+    height: $height-increase;
+  }
+}

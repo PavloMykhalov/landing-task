@@ -11,7 +11,7 @@
 }
 
 @mixin change-height-large-screen($height-increase) {
-  @media (max-width: 2200px) {
+  @media (max-width: 2500px) {
     height: $height-increase;
   }
 }
